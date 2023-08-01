@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import Header from "./Components/Header";
-import Product from "./Components/Product";
-import Footer from "./Components/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Cart from "./Pages/Cart";
+import { DataProvider } from "./Context/DataContext";
 
 const App = () => {
-  const [cartValue, setCartValue] = useState(0);
-
   return (
-    <div>
-      <Header cartValue={cartValue} />
-      <Product cartValue={cartValue} setCartValue={setCartValue} />
-      <Footer />
-    </div>
+    <DataProvider>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" Component={Home} />
+        <Route path="/cart" Component={Cart} />   
+      </Routes>
+    </BrowserRouter>
+    </DataProvider>
   );
 };
 
