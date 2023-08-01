@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import DataContext from "../Context/DataContext";
 
-const Header = ({cartValue}) => {
+const Header = () => {
+  const { cartValue } = useContext(DataContext);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,7 +25,7 @@ const Header = ({cartValue}) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#!">
+                <a className="nav-link active" aria-current="page" href="/">
                   Home
                 </a>
               </li>
@@ -35,43 +38,27 @@ const Header = ({cartValue}) => {
                 <a
                   className="nav-link dropdown-toggle"
                   id="navbarDropdown"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Shop
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#!">
-                      All Products
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#!">
-                      Popular Items
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#!">
-                      New Arrivals
-                    </a>
-                  </li>
-                </ul>
               </li>
             </ul>
             <form className="d-flex">
-              <button className="btn btn-outline-dark" type="submit">
-                <i className="bi-cart-fill me-1"></i>
-                Cart
-                <span className="badge bg-dark text-white ms-1 rounded-pill" id="Cart">
-                  {cartValue}
-                </span>
-              </button>
+              <Link to="/cart">
+                <button className="btn btn-outline-dark" type="submit">
+                  <i className="bi-cart-fill me-1"></i>
+                  Cart
+                  <span
+                    className="badge bg-dark text-white ms-1 rounded-pill"
+                    id="Cart"
+                  >
+                    {cartValue}
+                  </span>
+                </button>
+              </Link>
             </form>
           </div>
         </div>
@@ -81,7 +68,10 @@ const Header = ({cartValue}) => {
           <div className="text-center text-white">
             <h1 className="display-4 fw-bolder ">V-Mart</h1>
             <p className="lead fw-normal text-white-50 mb-0">
-             IF YOU CAN'T STOP THINKING ABOUT IT <span className="h3" id="qoutes">JUST BUY IT..</span>
+              IF YOU CAN'T STOP THINKING ABOUT IT{" "}
+              <span className="h3" id="qoutes">
+                JUST BUY IT..
+              </span>
             </p>
           </div>
         </div>
