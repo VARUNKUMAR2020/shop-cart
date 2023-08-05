@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import DataContext from "../Context/DataContext";
+import { connect } from 'react-redux';
 
-const Header = () => {
-  const { cartValue } = useContext(DataContext);
+const Header = ({ cartValue }) => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -76,8 +75,12 @@ const Header = () => {
           </div>
         </div>
       </header>
-    </div>
+      </div>
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  cartValue: state.cartValue,
+});
+
+export default connect(mapStateToProps)(Header);

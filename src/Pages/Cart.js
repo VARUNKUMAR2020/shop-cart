@@ -1,12 +1,6 @@
 import React, { useContext, useState } from "react";
-import DataContext from "../Context/DataContext";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(DataContext);
-  const [amt, setamt] = useState(0);
-  console.log(cart)
-  const [productCount, setProductCount] = useState(0);
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-secondary  ">
